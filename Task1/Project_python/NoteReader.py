@@ -7,7 +7,7 @@ class Reader:
         with open(r'Notebook.json', 'r', encoding='utf-8') as f:
             loaded_user_notes = json.load(f)
 
-        return loaded_user_notes
+        return loaded_user_notes  # comment: dict type
 
 # if __name__ == '__main__':
 #     search = Reader().get_contact_surname('Петров')

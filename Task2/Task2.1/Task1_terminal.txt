@@ -1,0 +1,121 @@
+user1@pc1:/$ cd ~
+user1@pc1:~$ cd Documents/Attestation_Programmer_2_Quarter/Task2/
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ nano script.sh 
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ ./script.sh 
+mv: target 'Name_of_the_toy' is not a directory
+mv: cannot stat 'Name_of_the_toy': No such file or directory
+ls: cannot access 'Toys': No such file or directory
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ ls
+Names_of_the_toy  script.sh  toys_for_preschool_children  toys_for_school_children
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ rm Names_of_the_toy/ toys_for_school_children/ toys_for_preschool_children/ -r
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ ls
+script.sh
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ nano script.sh 
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ ./script.sh 
+total 16
+55577312 drwxr-xr-x 4 user1 user1 4096 фев 21 12:51 .
+55575301 drwxrwxr-x 3 user1 user1 4096 фев 21 12:51 ..
+55577308 drwxr-xr-x 5 user1 user1 4096 фев 21 12:51 toys_for_preschool_children
+55577303 drwxr-xr-x 5 user1 user1 4096 фев 21 12:51 toys_for_school_children
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ ls
+script.sh  Toys
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ nano script.sh 
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ tree Toys/
+Command 'tree' not found, but can be installed with:
+sudo snap install tree  # version 1.8.0+pkg-3fd6, or
+sudo apt  install tree  # version 2.0.2-1
+See 'snap info tree' for additional versions.
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ sudo snap install tree -y
+error: unknown flag `y'
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ sudo snap install tree
+tree 1.8.0+pkg-3fd6 from 林博仁(Buo-ren, Lin) (brlin) installed
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ tree Toys/
+locales-launch: Data of en_US locale not found, generating, please wait...
+locales-launch: Data of ru_RU locale not found, generating, please wait...
+Toys/
+├── toys_for_preschool_children
+│   ├── Cars.txt
+│   ├── Dolls.txt
+│   └── Soft_toys.txt
+└── toys_for_school_children
+    ├── Constructors.txt
+    ├── Robots.txt
+    └── Table_games.txt
+
+8 directories, 0 files
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ sudo snap remote tree
+error: unknown command "remote", see 'snap help'.
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ sudo snap remove tree
+tree removed
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ cat script.sh 
+#!/bin/bash
+
+mkdir -p toys_for_school_children/{Robots,Constructors,Table_games}.txt;
+mkdir -p toys_for_preschool_children/{Soft_toys,Dolls,Cars}.txt;
+mkdir Name_of_the_toy;
+mv toys_for_{school,preschool}_children Name_of_the_toy;
+mv Name_of_the_toy Toys;
+ls -ali Toys;
+
+
+
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ sudo systemctl status cron
+● cron.service - Regular background program processing daemon
+     Loaded: loaded (/lib/systemd/system/cron.service; enabled; vendor preset: enabled)
+     Active: active (running) since Tue 2023-02-21 11:15:40 MSK; 2h 15min ago
+       Docs: man:cron(8)
+   Main PID: 621 (cron)
+      Tasks: 1 (limit: 38107)
+     Memory: 468.0K
+        CPU: 47ms
+     CGroup: /system.slice/cron.service
+             └─621 /usr/sbin/cron -f -P
+
+фев 21 11:30:01 pc1 CRON[5153]: (root) CMD ([ -x /etc/init.d/anacron ] && if [ ! -d /run/systemd/sys>
+фев 21 11:30:01 pc1 CRON[5152]: pam_unix(cron:session): session closed for user root
+фев 21 12:17:01 pc1 CRON[10169]: pam_unix(cron:session): session opened for user root(uid=0) by (uid>
+фев 21 12:17:01 pc1 CRON[10170]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+фев 21 12:17:01 pc1 CRON[10169]: pam_unix(cron:session): session closed for user root
+фев 21 12:30:01 pc1 CRON[11562]: pam_unix(cron:session): session opened for user root(uid=0) by (uid>
+фев 21 12:30:01 pc1 CRON[11563]: (root) CMD ([ -x /etc/init.d/anacron ] && if [ ! -d /run/systemd/sy>
+фев 21 12:30:01 pc1 CRON[11562]: pam_unix(cron:session): session closed for user root
+фев 21 13:30:01 pc1 CRON[15243]: pam_unix(cron:session): session opened for user root(uid=0) by (uid>
+фев 21 13:30:01 pc1 CRON[15243]: pam_unix(cron:session): session closed for user root
+lines 1-21/21 (END)
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ crontab -l
+no crontab for user1
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ crontab -e
+no crontab for user1 - using an empty one
+
+Select an editor.  To change later, run 'select-editor'.
+  1. /bin/nano        <---- easiest
+  2. /usr/bin/vim.tiny
+  3. /bin/ed
+
+Choose 1-3 [1]: 1
+No modification made
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ pwd
+/home/user1/Documents/Attestation_Programmer_2_Quarter/Task2
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ ^C
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ crontab -e
+no crontab for user1 - using an empty one
+crontab: installing new crontab
+
+
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ ls -l ~/Documents/
+total 24
+drwxrwxr-x 5 user1 user1 4096 фев 19 15:35 Attestation_Programmer_2_Quarter
+drwxrwxr-x 3 user1 user1 4096 фев 21 11:54 GB_Developer_Workbook
+drwxr-xr-x 7 user1 user1 4096 янв 20  1970 idea-IC-223.8617.56
+drwxr-xr-x 8 user1 user1 4096 янв 20  1970 pycharm-community-2022.3.2
+-rw-rw-r-- 1 user1 user1  380 фев 19 15:48 storage.txt
+-rw-rw-r-- 1 user1 user1  530 фев 21 11:46 system_setup.txt
+user1@pc1:~/Documents/Attestation_Programmer_2_Quarter/Task2 (Task2)$ ls -l ~/Documents/
+total 28
+drwxrwxr-x 5 user1 user1 4096 фев 19 15:35 Attestation_Programmer_2_Quarter
+drwxrwxr-x 3 user1 user1 4096 фев 21 11:54 GB_Developer_Workbook
+drwxr-xr-x 7 user1 user1 4096 янв 20  1970 idea-IC-223.8617.56
+drwxr-xr-x 8 user1 user1 4096 янв 20  1970 pycharm-community-2022.3.2
+-rw-rw-r-- 1 user1 user1  380 фев 19 15:48 storage.txt
+-rw-rw-r-- 1 user1 user1  530 фев 21 11:46 system_setup.txt
+-rw-r--r-- 2 user1 user1 3177 фев 21 13:39 Task1_terminal_bk.txt
